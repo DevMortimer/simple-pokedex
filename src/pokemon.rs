@@ -1,4 +1,3 @@
-use iced::widget::image;
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]

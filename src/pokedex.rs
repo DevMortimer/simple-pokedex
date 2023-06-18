@@ -1,6 +1,6 @@
-use iced::widget::{button, column, image, row, text, text_input};
+use iced::widget::{button, column, image, text, text_input};
 use iced::{Alignment, Element, Sandbox};
-use ureq::{self, serde_json};
+use ureq;
 
 use crate::pokemon::Pokemon;
 
