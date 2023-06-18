@@ -1,0 +1,14 @@
+* Simple Pokedex
+A simple GUI program made with iced-rs that shows details about a Pokemon. As of now, it shows the following:
+- Name
+- Description
+- Sprite
+
+I will add more later.
+
+** Why
+Because I often play Pokemon games in my computer and I'd rather have a small window where I can search a Pokemon name and see what I need rather than open a browser.
+
+** Screenshot
+As of now, with name, description, and sprite it looks like:
+[[./screenshot.png]]
