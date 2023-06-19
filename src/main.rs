@@ -9,8 +9,7 @@ fn main() -> iced::Result {
         window: window::Settings {
             size: (512, 768),
             position: window::Position::Centered,
-            min_size: Some((512, 768)),
-            resizable: false,
+            min_size: Some((256, 384)),
             // icon: todo!(),
             platform_specific: window::PlatformSpecific,
             ..Default::default()
