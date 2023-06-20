@@ -12,4 +12,4 @@ Because I often play Pokemon games in my computer and I'd rather have a small wi
 ** Screenshot
 As of now, with name, description, and sprite it looks like:
 
-[[./screenshot.png]]
+[[./assets/screenshot.png]]
