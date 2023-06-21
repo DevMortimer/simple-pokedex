@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 iced = {version = "0.9.0", features = ["image"]}
 serde = {version = "1.0.164", features = ["derive"]}
+textdistance = "1.0.2"
 ureq = {version = "2.7.0", features = ["json"]}
