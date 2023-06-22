@@ -68,54 +68,41 @@ impl Sandbox for Pokedex {
             .size(42)
             .style(Color::from_rgb8(255, 189, 131));
         let pokemon_desc = Scrollable::new(text(&self.description).size(32));
+        let stats = Container::new(Scrollable::new(
+            if !self.stats.iter().all(|x| *x == 0) {
+                let stats_title =
+                    Container::new(text("STATS").style(Color::from_rgb8(238, 230, 164)))
+                        .padding(Padding::from([0, 48]));
+
+                let stats = column![
+                    stats_title,
+                    stat!("HP" => Color::from_rgb8(65, 180, 131) => self.stats[0]),
+                    stat!("ATK" => Color::from_rgb8(222, 106, 98) => self.stats[1]),
+                    stat!("DEF" => Color::from_rgb8(74, 115, 172) => self.stats[2]),
+                    stat!("SP. ATK" => Color::from_rgb8(255, 197, 90) => self.stats[3]),
+                    stat!("SP. DEF" => Color::from_rgb8(98, 98, 123) => self.stats[4]),
+                    stat!("SPEED" => Color::from_rgb8(238, 148, 115) => self.stats[5]),
+                ];
+
+                stats
+            } else {
+                column![]
+            }
+            .align_items(Alignment::End)
+            .spacing(4),
+        ));
 
         column![
-            column![
-                title,
-                query_input,
-                Space::new(0, 8),
-                search_button,
-                sprite_img,
-                pokemon_name,
-                pokemon_desc,
-            ]
-            .align_items(Alignment::Center)
-            .height(Length::FillPortion(2)),
-            row![
-                // the stats
-                Container::new(Scrollable::new(
-                    if !self.stats.iter().all(|x| *x == 0) {
-                        let stats_title =
-                            Container::new(text("STATS").style(Color::from_rgb8(238, 230, 164)))
-                                .padding(Padding::from([0, 48]));
-
-                        let stats = column![
-                            stats_title,
-                            stat!("HP" => Color::from_rgb8(65, 180, 131) => self.stats[0]),
-                            stat!("ATK" => Color::from_rgb8(222, 106, 98) => self.stats[1]),
-                            stat!("DEF" => Color::from_rgb8(74, 115, 172) => self.stats[2]),
-                            stat!("SP. ATK" => Color::from_rgb8(255, 197, 90) => self.stats[3]),
-                            stat!("SP. DEF" => Color::from_rgb8(98, 98, 123) => self.stats[4]),
-                            stat!("SPEED" => Color::from_rgb8(238, 148, 115) => self.stats[5]),
-                        ];
-
-                        stats
-                    } else {
-                        column![]
-                    }
-                    .align_items(Alignment::End)
-                    .spacing(4)
-                ))
-                .center_x()
-                .center_y()
-                .width(Length::FillPortion(1)),
-                // the moves
-                Container::new(text("some sutf here later"))
-                    .center_x()
-                    .center_y()
-                    .width(Length::FillPortion(1))
-            ]
-            .height(Length::FillPortion(1)),
+            title,
+            query_input,
+            Space::new(0, 8),
+            search_button,
+            sprite_img,
+            pokemon_name,
+            pokemon_desc,
+            Space::new(0, 16),
+            stats,
+            Space::new(0, 8)
         ]
         .width(Length::Fill)
         .height(Length::Fill)
